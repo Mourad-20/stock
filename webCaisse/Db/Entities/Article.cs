@@ -19,6 +19,8 @@ namespace webCaisse.Db.Entities
         public Int64? IdTauxTva { get; set; }
         public virtual TauxTva TauxTva { get; set; }
         public Int64? IdZone { get; set; }
+        public Int64? IdTypeArticle { get; set; }
+        public virtual TypeArticle TypeArticle { get; set; }
         public virtual Zone Zone { get; set; }
         public String PathImage { get; set; }
         public Int64? EnActivite { get; set; }

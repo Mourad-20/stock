@@ -14,6 +14,9 @@ namespace webCaisse.VMs.Models
         public Double Montant { get; set; }
         public Int64? IdTypeUnite { get; set; }
         public String LibelleTypeUnite { get; set; }
+        public Int64? IdTypeArticle { get; set; }
+        public String LibelleTypeArticle { get; set; }
+
         public Double QuantiteDisponible { get; set; }
         public Double QuantiteMin { get; set; }
         public Int64? IdCategorie { get; set; }

@@ -15,6 +15,7 @@ namespace webCaisse.Db.configs
             HasKey(e => e.Identifiant);
             HasOptional<Categorie>(e => e.Categorie).WithMany().HasForeignKey(e => e.IdCategorie);
             HasOptional<TauxTva>(e => e.TauxTva).WithMany().HasForeignKey(e => e.IdTauxTva);
+            HasOptional<TypeArticle>(e => e.TypeArticle).WithMany().HasForeignKey(e => e.IdTypeArticle);
             HasOptional<TypeUnite>(e => e.TypeUnite).WithMany().HasForeignKey(e => e.IdTypeUnite);
             HasOptional<Zone>(e => e.Zone).WithMany().HasForeignKey(e => e.IdZone);
             //HasOptional<Pays>(e => e.Pays).WithMany().HasForeignKey(e => e.IdPays);

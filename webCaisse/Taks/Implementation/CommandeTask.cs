@@ -222,7 +222,6 @@ namespace webCaisse.Taks.Implementation
             _commande.Montant = getTotalMontantCommande(_commandeDM);
             _uow.Repos<Commande>().Update(_commande);
             _uow.saveChanges();
-
             if (_commandeDM.DetailCommandeDMs != null)
             {
                 IDetailCommandeTask _detailCommandeTask = IoCContainer.Resolve<IDetailCommandeTask>();
@@ -406,7 +405,7 @@ namespace webCaisse.Taks.Implementation
         {
             //ok
 
-            bool _shouldGetResult = (_code.Length > 0) || ( _numero.Length > 0) || (_idEtatCommande != null) || 
+            bool _shouldGetResult = (_code!=null&&_code.Length > 0) || (_numero != null && _numero.Length > 0) || (_idEtatCommande != null) || 
                 (_idCreePar != null) || (_idSeance != null) || (_idServeur != null) || (_ddebut != null) || 
                 (_dfin != null)||(_caisseids!=null);
             if (_caisseids==null)
@@ -427,8 +426,9 @@ namespace webCaisse.Taks.Implementation
                     && ((_idSeance != null) ? a.IdSeance == _idSeance : true)
                     && ((_idServeur != null) ? a.IdServeur == _idServeur : true)
                      && ((_ddebut != null) ? a.DateCommande >= _ddebut : true)
+                     
                     && ((_dfin != null) ? a.DateCommande <= _dfin : true)
-                    && ((_code.Length > 0) ? a.CodeCommande == _code : true)
+                    && ((_code!=null &&_code.Length > 0) ? a.CodeCommande == _code : true)
                     ).Select(
                         o => new CommandeDM()
                         {

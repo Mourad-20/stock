@@ -19,6 +19,9 @@ namespace webCaisse.DMs
         public Int64? IdZone { get; set; }
         public Int64? IdTypeUnite { get; set; }
         public Int64? IdTauxTva { get; set; }
+        public Int64? IdTypeArticle { get; set; }
+        public String LibelleTypeArticle { get; set; }
+
         public Double TauxTva { get; set; }
         public String ImageAsString { get; set; }
         public String PathImage { get; set; }

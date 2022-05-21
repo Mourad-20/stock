@@ -30,7 +30,8 @@ namespace webCaisse.Mappers
                     QuantiteMin = _src.QuantiteMin,
                     EnActivite = _src.EnActivite,
                     IdTypeUnite= _src.IdTypeUnite,
-                    LibelleTypeUnite= _src.LibelleTypeUnite,
+                    IdTypeArticle = _src.IdTypeArticle,
+                    LibelleTypeUnite = _src.LibelleTypeUnite,
                     TauxTva=_src.TauxTva,
                     Referance=_src.Referance,
                     CodeBare=_src.CodeBare
@@ -57,7 +58,9 @@ namespace webCaisse.Mappers
                     IdTypeUnite= _src.IdTypeUnite,
                     Referance = _src.Referance,
                     CodeBare = _src.CodeBare,
-                    TauxTva=_src.TauxTva
+                    TauxTva=_src.TauxTva,
+                    IdTypeArticle = _src.IdTypeArticle,
+
                 };
             }
             return _dest;
@@ -81,6 +84,8 @@ namespace webCaisse.Mappers
                     EnActivite = _src.EnActivite,
                     IdTypeUnite = _src.IdTypeUnite,
                     LibelleTypeUnite = _src.TypeUnite != null ? _src.TypeUnite.Code : "",
+                    IdTypeArticle = _src.IdTypeArticle,
+                    LibelleTypeArticle = _src.TypeArticle != null ? _src.TypeArticle.Code : "",
                     Referance = _src.Referance,
                     CodeBare = _src.CodeBare
                 };

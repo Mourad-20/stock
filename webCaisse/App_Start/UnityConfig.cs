@@ -25,7 +25,9 @@ namespace webCaisse
             container.RegisterType<ICategorieTask, CategorieTask>();
             container.RegisterType<IArticleTask, ArticleTask>();
             container.RegisterType<IGroupeTask, GroupeTask>();
+            container.RegisterType<ITypeArticleTask, TypeArticleTask>();
             container.RegisterType<ITypeUniteTask, TypeUniteTask>();
+
             container.RegisterType<ILocaliteTask, LocaliteTask>();
             container.RegisterType<ICommandeTask, CommandeTask>();
             container.RegisterType<IDetailCommandeTask, DetailCommandeTask>();

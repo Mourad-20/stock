@@ -74,17 +74,26 @@ namespace webCaisse.Controllers
             {
                 IArticleTask _articleTask = IoCContainer.Resolve<IArticleTask>();
                 ITypeUniteTask _typeUniteTask = IoCContainer.Resolve<ITypeUniteTask>();
+                ITypeArticleTask _typeArticleTask = IoCContainer.Resolve<ITypeArticleTask>();
+
+                
                 if (articleVM != null)
                 {
 
                     string code = articleVM.LibelleTypeUnite;
+                    string codetypearticle = articleVM.LibelleTypeArticle;
+
                     TypeUniteDM _typeUniteDM = _typeUniteTask.getTypeUniteDMByCode(code);
+                    TypeArticleDM _typeArticleDM = _typeArticleTask.getTypeArticleDMByCode(codetypearticle);
+
                     ArticleDM _articleDM = ArticleMapper.ArticleVMtoArticleDM(articleVM);
 
                     _articleDM.QuantiteDisponible = 0;
                     //_articleDM.QuantiteMin = 0;
                     //_articleDM.IdTauxTva = 1;
                     _articleDM.IdTypeUnite = _typeUniteDM.Identifiant;
+                    _articleDM.IdTypeArticle = _typeArticleDM.Identifiant;
+
                     _idArticle = _articleTask.addArticle(_articleDM);
 
                 }
@@ -114,15 +123,23 @@ namespace webCaisse.Controllers
                 //Int64? _idUtilisateur = TokenManager.getIdentifiantFromToken(Request);
                 IArticleTask _articleTask = IoCContainer.Resolve<IArticleTask>();
                 ITypeUniteTask _typeUniteTask = IoCContainer.Resolve<ITypeUniteTask>();
+                ITypeArticleTask _typeArticleTask = IoCContainer.Resolve<ITypeArticleTask>();
+
                 if (articleVM != null)
                 {
 
                     string code = articleVM.LibelleTypeUnite;
+                    string codetypearticle = articleVM.LibelleTypeArticle;
+
+
                     TypeUniteDM _typeUniteDM = _typeUniteTask.getTypeUniteDMByCode(code);
+                    TypeArticleDM _typeArticleDM = _typeArticleTask.getTypeArticleDMByCode(codetypearticle);
 
                     ArticleDM _articleDM = ArticleMapper.ArticleVMtoArticleDM(articleVM);
                     _articleDM.IdTypeUnite = _typeUniteDM.Identifiant;
-                     _articleTask.updateArticle(_articleDM);
+                    _articleDM.IdTypeArticle = _typeArticleDM.Identifiant;
+
+                    _articleTask.updateArticle(_articleDM);
                 }
 
                     _etatRep = new EtatReponse() { Code = EtatReponseCode.SUCCESS, Message = "RETURN OK" };

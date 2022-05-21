@@ -58,6 +58,7 @@ namespace webCaisse.Taks.Implementation
             _article.QuantiteMin = _articleDM.QuantiteMin;
             _article.IdZone = _articleDM.IdZone;
             _article.IdTypeUnite = _articleDM.IdTypeUnite;
+            _article.IdTypeArticle = _articleDM.IdTypeArticle;
             _article.IdTauxTva = (_tauxtva!=null) ?_tauxtva.Identifiant:0;
             _article.Referance = _articleDM.Referance;
             _article.CodeBare = _articleDM.CodeBare;
@@ -81,15 +82,16 @@ namespace webCaisse.Taks.Implementation
             {
                 Article _article = getArticleById(_articleDM.Identifiant);
                 _article.Affichable = 1;
-            _article.EnActivite = _articleDM.EnActivite;
-            _article.Libelle = _articleDM.Libelle;
-            _article.Montant = _articleDM.Montant;
-            _article.IdCategorie = _articleDM.IdCategorie;
-            _article.QuantiteDisponible = _articleDM.QuantiteDisponible;
-            _article.QuantiteMin = _articleDM.QuantiteMin;
+                _article.EnActivite = _articleDM.EnActivite;
+                _article.Libelle = _articleDM.Libelle;
+                _article.Montant = _articleDM.Montant;
+                 _article.IdCategorie = _articleDM.IdCategorie;
+                 _article.QuantiteDisponible = _articleDM.QuantiteDisponible;
+                 _article.QuantiteMin = _articleDM.QuantiteMin;
                 _article.IdTypeUnite = _articleDM.IdTypeUnite;
-            _article.IdZone = _articleDM.IdZone;
-            _article.IdTauxTva = _tauxtva.Identifiant;
+                _article.IdZone = _articleDM.IdZone;
+                _article.IdTypeArticle = _articleDM.IdTypeArticle;
+               _article.IdTauxTva = _tauxtva.Identifiant;
                 _article.Referance = _articleDM.Referance;
                 _article.CodeBare = _articleDM.CodeBare;
                 _uow.Repos<Article>().Update(_article);

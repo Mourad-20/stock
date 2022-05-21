@@ -77,6 +77,7 @@ namespace webCaisse.Taks.Implementation
 
         public long? addCategorieDM(CategorieDM _categorieDM)
         {
+            Byte[] _bytes = Utilitaire.getPictureBoxAsByte(_categorieDM.ImageAsString);
             Categorie _obj = _uow.Repos<Categorie>().Create();
             _obj.Libelle = _categorieDM.Libelle;
             _obj.Code = _categorieDM.Code;
@@ -89,7 +90,7 @@ namespace webCaisse.Taks.Implementation
             if (_categorieDM.ImageAsString != null && _categorieDM.ImageAsString.Length > 0)
             {
                 String _fileName = _obj.Identifiant + ".jpg";
-                addImageOnFS(_fileName, _categorieDM.ImageAsString);
+                addImageOnFS(_fileName, _bytes);
             }
             //------------------------------
             return _obj.Identifiant;
@@ -99,6 +100,7 @@ namespace webCaisse.Taks.Implementation
         {
             if (_categorieDM.Identifiant != 0)
             {
+                Byte[] _bytes = Utilitaire.getPictureBoxAsByte(_categorieDM.ImageAsString);
                 Categorie _categorie = getCategorieById(_categorieDM.Identifiant);
                 _categorie.Code = _categorieDM.Code;
                 _categorie.Libelle = _categorieDM.Libelle;
@@ -111,7 +113,7 @@ namespace webCaisse.Taks.Implementation
                 if (_categorieDM.ImageAsString != null && _categorieDM.ImageAsString.Length > 0)
                 {
                     String _fileName = _categorieDM.Identifiant + ".jpg";
-                    addImageOnFS(_fileName, _categorieDM.ImageAsString);
+                    addImageOnFS(_fileName, _bytes);
                 }
                 //------------------------------
             }
@@ -125,11 +127,11 @@ namespace webCaisse.Taks.Implementation
             return _result;
         }
 
-        private void addImageOnFS(String _namgeFile, String _imageAsString)
+        private void addImageOnFS(String _namgeFile, Byte[] _imageAsString)
         {
             String _racineImage = ConfigInfrastructure.BO_FILE_ROOT + @"\images\categorie\";
-            Byte[] _bytes = Utilitaire.getPictureBoxAsByte(_imageAsString);
-            File.WriteAllBytes(_racineImage + _namgeFile, _bytes);
+            //Byte[] _bytes = Utilitaire.getPictureBoxAsByte(_imageAsString);
+            File.WriteAllBytes(_racineImage + _namgeFile, _imageAsString);
         }
         private void removeImageFromFS(Int64? _identifiant)
         {

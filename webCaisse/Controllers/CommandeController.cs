@@ -64,7 +64,7 @@ namespace webCaisse.Controllers
                 {
                     ICommandeTask _commandeTask = IoCContainer.Resolve<ICommandeTask>();
                     ISeanceTask _seanceTask = IoCContainer.Resolve<ISeanceTask>();
-                    ITypeUniteTask _typeUniteTask = IoCContainer.Resolve<ITypeUniteTask>();
+                    ITypeArticleTask _typeUniteTask = IoCContainer.Resolve<ITypeArticleTask>();
                     SeanceDM _seanceDM = _seanceTask.getSeanceActive((long)_idUtilisateur);
                     CommandeDM _commandeDM = CommandeMapper.CommandeVMtoCommandeDM(commandeVM);
                     _commandeDM.IdCreePar = _idUtilisateur;
@@ -135,7 +135,7 @@ namespace webCaisse.Controllers
             {
                 Int64? _idUtilisateur = TokenManager.getIdentifiantFromToken(Request);
                 IUtilisateurTask _utilisateurTask = IoCContainer.Resolve<IUtilisateurTask>();
-                ITypeUniteTask _typeUniteTask = IoCContainer.Resolve<ITypeUniteTask>();
+                ITypeArticleTask _typeUniteTask = IoCContainer.Resolve<ITypeArticleTask>();
                 //-----------------------------------------------------------------
                 String _message = "";
                 Boolean _isOk = true;
@@ -166,10 +166,10 @@ namespace webCaisse.Controllers
                 {
                     ICommandeTask _commandeTask = IoCContainer.Resolve<ICommandeTask>();
                     ISeanceTask _seanceTask = IoCContainer.Resolve<ISeanceTask>();
-                    SeanceDM _seanceDM = _seanceTask.getSeanceActive((long)_idUtilisateur);
+                   // SeanceDM _seanceDM = _seanceTask.getSeanceActive((long)_idUtilisateur);
                     CommandeDM _commandeDM = CommandeMapper.CommandeVMtoCommandeDM(commandeVM);
                     _commandeDM.IdCreePar = _idUtilisateur;
-                    _commandeDM.IdSeance = _seanceDM.Identifiant;
+                   // _commandeDM.IdSeance = _seanceDM.Identifiant;
 
                     if ((_commandeDM.IdServeur == null || _commandeDM.IdServeur <= 0) && !_utilisateurTask.isUtilisateurOnGroupes(_groupeDMs,new List<String>() { })) {
                         _commandeDM.IdServeur = _idUtilisateur;
@@ -602,6 +602,13 @@ namespace webCaisse.Controllers
                         if (_detailCommandeDMs.Count>0)
                         {
                             CommandeVM _commandeVM = CommandeMapper.CommandeDMtoCommandeVM(_obj);
+                            _commandeVM.DetailCommandes = new List<DetailCommandeVM>();
+                            foreach (DetailCommandeDM _dtc in _detailCommandeDMs)
+                            {
+                                DetailCommandeVM detailCommandeVM = DetailCommandeMapper.DetailCommandeDMtoDetailCommandeVM(_dtc);
+                                _commandeVM.DetailCommandes.Add(detailCommandeVM);
+                            }
+                           
                             _commandeVMs.Add(_commandeVM);
                         }
                        
@@ -849,12 +856,12 @@ namespace webCaisse.Controllers
 
         [HttpPost]
         public HttpResponseMessage getCommandes(ParamCammande paramsDate)
-        {
+       {
             DateTime? d_debut = Cvrt.strToDateTime(paramsDate._datedebut);
 
             DateTime? d_fin = Cvrt.strToDateTime(paramsDate._datefin);
             String c_code = paramsDate._code;
-           List<Int64?> caisseids = paramsDate.listeidcaisse != null? paramsDate.listeidcaisse : new List<long?>();
+            List<Int64?> caisseids = paramsDate.listeidcaisse != null? paramsDate.listeidcaisse : new List<long?>();
            // DateTime ? d_fin = DateTime.Parse(paramsDate._datefin);
             Dictionary<String, Object> _model = new Dictionary<String, Object>();
             HttpState _httpState = new HttpState();
@@ -892,6 +899,70 @@ namespace webCaisse.Controllers
             return Utilitaire.constructResponse(this, _model);
         }
         //===========================================================================
+
+        [HttpPost]
+        public HttpResponseMessage getMouvement(ParamCammande paramsDate)
+        {
+            DateTime? d_debut = Cvrt.strToDateTime(paramsDate._datedebut);
+
+            DateTime? d_fin = Cvrt.strToDateTime(paramsDate._datefin);
+            String c_code = paramsDate._code;
+            List<Int64?> caisseids = paramsDate.listeidcaisse != null ? paramsDate.listeidcaisse : new List<long?>();
+            // DateTime ? d_fin = DateTime.Parse(paramsDate._datefin);
+            Dictionary<String, Object> _model = new Dictionary<String, Object>();
+            HttpState _httpState = new HttpState();
+            EtatReponse _etatRep = new EtatReponse();
+            ICollection<CommandeVM> _commandeVMs = null;
+            ICollection<DetailCommandeDM> detailCommandeDMs = null;
+            try
+            {
+                Int64? _idUtilisateur = TokenManager.getIdentifiantFromToken(Request);
+                ICommandeTask _commandeTask = IoCContainer.Resolve<ICommandeTask>();
+                IDetailCommandeTask _detailCommandeTask = IoCContainer.Resolve<IDetailCommandeTask>();
+                IArticleTask _articleTask = IoCContainer.Resolve<IArticleTask>();
+                ICollection<CommandeDM> _commandeDMs = _commandeTask.getCommandeDMs (_ddebut: d_debut, _dfin: d_fin);
+                if (_commandeDMs != null)
+                {
+                    ICollection<DetailCommandeDM> _detailcommandeDM = new List<DetailCommandeDM>();
+                    _commandeVMs = new List<CommandeVM>();
+                    foreach (CommandeDM _obj in _commandeDMs)
+                    {
+                        CommandeVM _commandeVM = CommandeMapper.CommandeDMtoCommandeVM(_obj);
+                        _commandeVM.DetailCommandes = new List<DetailCommandeVM>();
+                        ICollection<DetailCommandeDM> dcDM = _detailCommandeTask.getDetailCommandesDMByIdCommande(_obj.Identifiant);
+                        if (dcDM != null && dcDM.Count > 0)
+                        {
+                            foreach (DetailCommandeDM dc in dcDM)
+                            {
+                                DetailCommandeVM DetailCommandeVm = DetailCommandeMapper.DetailCommandeDMtoDetailCommandeVM(dc);
+
+                                _commandeVM.DetailCommandes.Add(DetailCommandeVm);
+                            }
+
+                        }
+
+                      
+                       
+                        _commandeVMs.Add(_commandeVM);
+                    }
+               
+                    _commandeVMs = _commandeVMs.OrderByDescending(x => x.Identifiant).ToList();
+                }
+                _etatRep = new EtatReponse() { Code = EtatReponseCode.SUCCESS, Message = "RETURN OK" };
+            }
+            catch (Exception e)
+            {
+                _httpState = new HttpState() { Code = HttpStateCode.ERROR, Message = e.Message };
+                MyLogger.log(Utilitaire.getEmplacement(this) + ":\n" + Utilitaire.getDetailsException(e), MyLoggerCode.STANDARD);
+            }
+
+            _model.Add("commandeVMs", _commandeVMs);
+            _model.Add(HttpState.Name, _httpState);
+            _model.Add(EtatReponse.Name, _etatRep);
+            return Utilitaire.constructResponse(this, _model);
+        }
+        //===========================================================================
+
         [HttpPost]
         public HttpResponseMessage getRecapArticles(ParamDate paramsDate)
         {
@@ -921,6 +992,7 @@ namespace webCaisse.Controllers
 
                     foreach (CommandeDM _obj in _commandeDMs)
                     {
+                        
                         ICollection<DetailCommandeDM> dcDM = _detailCommandeTask.getDetailCommandesDMByIdCommande(_obj.Identifiant);
                         if (dcDM!=null && dcDM.Count>0)
                         {
@@ -952,7 +1024,65 @@ namespace webCaisse.Controllers
             _model.Add(EtatReponse.Name, _etatRep);
             return Utilitaire.constructResponse(this, _model);
         }
+        //===========================================================================
+      
+        /*   [HttpPost]
+           public HttpResponseMessage getQantiteStockArticles(ParamDate paramsDate)
+           {
+              // DateTime? d_debut = Cvrt.strToDateTime(paramsDate._datedebut);
+
+             //  DateTime? d_fin = Cvrt.strToDateTime(paramsDate._datefin);
+
+               // DateTime ? d_fin = DateTime.Parse(paramsDate._datefin);
+               Dictionary<String, Object> _model = new Dictionary<String, Object>();
+               HttpState _httpState = new HttpState();
+               EtatReponse _etatRep = new EtatReponse();
+               ICollection<CommandeVM> _commandeVMs = null;
+               ICollection<DetailCommandeDM> detailCommandeDMs = null;
+               try
+               {
+                   Int64? _idUtilisateur = TokenManager.getIdentifiantFromToken(Request);
+                   ICommandeTask _commandeTask = IoCContainer.Resolve<ICommandeTask>();
+                   IDetailCommandeTask _detailCommandeTask = IoCContainer.Resolve<IDetailCommandeTask>();
+                   IArticleTask _articleTask = IoCContainer.Resolve<IArticleTask>();
+                   // ISeanceTask _seanceTask = IoCContainer.Resolve<ISeanceTask>();
+                   // SeanceDM _seanceDM = _seanceTask.getSeanceActive((long)_idUtilisateur);
+
+                       ICollection<DetailCommandeDM> _detailcommandeDM = new List<DetailCommandeDM>();
+                       _commandeVMs = new List<CommandeVM>();
 
 
+                           ICollection<DetailCommandeDM> dcDM = _detailCommandeTask.getDetailCommandesstockDMByIdArticle(_obj.Identifiant);
+                           if (dcDM != null && dcDM.Count > 0)
+                           {
+                               foreach (DetailCommandeDM dc in dcDM)
+                               {
+                                   _detailcommandeDM.Add(dc);
+                               }
+                           }
+
+
+                           //CommandeVM _commandeVM = CommandeMapper.CommandeDMtoCommandeVM(_obj);
+                           //_commandeVMs.Add(_commandeVM);
+
+
+                       detailCommandeDMs = _articleTask.listeArticle(_detailcommandeDM);
+                       detailCommandeDMs = detailCommandeDMs.OrderByDescending(x => x.Quantite).ToList();
+
+
+                   _etatRep = new EtatReponse() { Code = EtatReponseCode.SUCCESS, Message = "RETURN OK" };
+               }
+               catch (Exception e)
+               {
+                   _httpState = new HttpState() { Code = HttpStateCode.ERROR, Message = e.Message };
+                   MyLogger.log(Utilitaire.getEmplacement(this) + ":\n" + Utilitaire.getDetailsException(e), MyLoggerCode.STANDARD);
+               }
+
+               _model.Add("detailCommandeDMs", detailCommandeDMs);
+               _model.Add(HttpState.Name, _httpState);
+               _model.Add(EtatReponse.Name, _etatRep);
+               return Utilitaire.constructResponse(this, _model);
+           }
+           */
     }
 }

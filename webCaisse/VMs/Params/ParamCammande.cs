@@ -10,6 +10,7 @@ namespace webCaisse.VMs.Params
         public string _datedebut;
         public string _datefin;
         public List<Int64?> listeidcaisse;
+        
         public string _code;
     }
 }

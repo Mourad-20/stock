@@ -49,9 +49,9 @@ namespace webCaisse.Taks.Implementation
                     (_shouldGetResult)
                     && (a.Affichable == 1)
                     && (a.EnActivite == 1)
-                    &&(a.Quantite>a.QuantiteServi)
+                    && (a.Quantite > a.QuantiteServi)
                     && ((_idArticle != null) ? a.IdArticle == _idArticle : true)
-                    &&(a.Commande.CodeCommande=="ALLIMENTATION")
+                    && (a.Commande.CodeCommande == "ALLIMENTATION")
 
                     ).Select(
                         o => new DetailCommandeDM()
@@ -69,10 +69,12 @@ namespace webCaisse.Taks.Implementation
                             NomControleur = (o.ValiderPar != null) ? o.ValiderPar.Nom : "",
                             Description = o.Description,
                             NumerodeLot = o.NumerodeLot,
-                            IdValiderPar=o.IdValiderPar,
-                           TauxTVA=o.TauxTva,
+                            IdValiderPar = o.IdValiderPar,
+                            TauxTVA = o.TauxTva,
                             QuantiteServi = o.QuantiteServi,
-                            IdCaisse=o.IdCaisse,
+                            IdCaisse = o.IdCaisse,
+                            DateExpiration = o.DateExpiration,
+                            IdSituation=o.IdSituation,
                             LibelleArticle = (o.Article != null) ? o.Article.Libelle : "",
                             IdZone = (o.Article != null) ? o.Article.IdZone : null,
                             IdTypeUnite = o.IdTypeUnite,
@@ -113,6 +115,8 @@ namespace webCaisse.Taks.Implementation
                             NumerodeLot=o.NumerodeLot,
                             TauxTVA = o.TauxTva,
                             IdCaisse = o.IdCaisse,
+                            DateExpiration = o.DateExpiration,
+                            IdSituation = o.IdSituation,
                             QuantiteServi = o.QuantiteServi,
                             LibelleArticle = (o.Article != null) ? o.Article.Libelle : "",
                             IdZone = (o.Article != null) ? o.Article.IdZone : null,
@@ -176,6 +180,7 @@ namespace webCaisse.Taks.Implementation
             _detailCommande.IdCaisse = _detailCommandeDM.IdCaisse;
             _detailCommande.DateCreation = DateTime.Now;
             _detailCommande.IdTypeUnite = _detailCommandeDM.IdTypeUnite;
+            _detailCommande.IdSituation = _detailCommandeDM.IdSituation;
             _uow.Repos<DetailCommande>().Insert(_detailCommande);
             _uow.saveChanges();
 

@@ -33,6 +33,8 @@ namespace webCaisse.Db
             modelBuilder.Configurations.Add(new DetailReglementConfig());
             modelBuilder.Configurations.Add(new TauxTvaConfig());
             modelBuilder.Configurations.Add(new TypeUniteConfig());
+            modelBuilder.Configurations.Add(new TypeArticleConfig());
+
             modelBuilder.Configurations.Add(new EtatLocaliteConfig());
             modelBuilder.Configurations.Add(new SituationCommandeConfig());
             modelBuilder.Configurations.Add(new ZoneConfig());
