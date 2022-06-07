@@ -308,6 +308,7 @@
     <Compile Include="Db\configs\AffectationCaisseConfig.cs" />
     <Compile Include="Db\configs\AppartenanceConfig.cs" />
     <Compile Include="Db\configs\AssociationMessageConfig.cs" />
+    <Compile Include="Db\configs\InterlocuteurConfig.cs" />
     <Compile Include="Db\configs\MessageConfig.cs" />
     <Compile Include="Db\configs\CaisseConfig.cs" />
     <Compile Include="Db\configs\CommercialisationConfig.cs" />
@@ -336,6 +337,7 @@
     <Compile Include="Db\Entities\Appartenance.cs" />
     <Compile Include="Db\Entities\AssociationMessage.cs" />
     <Compile Include="Db\Entities\Caisse.cs" />
+    <Compile Include="Db\Entities\Interlocuteur.cs" />
     <Compile Include="Db\Entities\TypeCommande.cs" />
     <Compile Include="Db\Entities\TypeArticle.cs" />
     <Compile Include="Db\Entities\TypeUnite.cs" />
@@ -372,6 +374,7 @@
     <Compile Include="DMs\Codes\TypeUniteCode.cs" />
     <Compile Include="DMs\Codes\SituationCommandeCode.cs" />
     <Compile Include="DMs\Codes\LocaliteCode.cs" />
+    <Compile Include="DMs\InterlocuteurDM.cs" />
     <Compile Include="DMs\ModeReglementDM.cs" />
     <Compile Include="DMs\TypeArticleDM.cs" />
     <Compile Include="DMs\TypeUniteDM.cs" />
@@ -399,6 +402,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\AffectationMessageMapper.cs" />
+    <Compile Include="Mappers\InterlocuteurMapper.cs" />
     <Compile Include="Mappers\EtatCommandeMapper.cs" />
     <Compile Include="Mappers\TypeArticleMapper.cs" />
     <Compile Include="Mappers\TypeUniteMapper.cs" />
@@ -440,6 +444,7 @@
     <Compile Include="Taks\Contracts\IAffectationMessageTask.cs" />
     <Compile Include="Taks\Contracts\IAffectationCaisseTask.cs" />
     <Compile Include="Taks\Contracts\IAssociationMessageTask.cs" />
+    <Compile Include="Taks\Contracts\IInterlocuteurTask.cs" />
     <Compile Include="Taks\Contracts\IModeReglement.cs" />
     <Compile Include="Taks\Contracts\ITypeArticleTask.cs" />
     <Compile Include="Taks\Contracts\ITypeUniteTask.cs" />
@@ -467,6 +472,7 @@
     <Compile Include="Taks\Implementation\AffectationMessageTask.cs" />
     <Compile Include="Taks\Implementation\AffectationCaisseTask.cs" />
     <Compile Include="Taks\Implementation\AssociationMessageTask.cs" />
+    <Compile Include="Taks\Implementation\InterlocuteurTask.cs" />
     <Compile Include="Taks\Implementation\ModeReglementTask.cs" />
     <Compile Include="Taks\Implementation\TypeArticleTask.cs" />
     <Compile Include="Taks\Implementation\TypeUniteTask.cs" />
@@ -505,6 +511,7 @@
     <Compile Include="VMs\Models\AffectationCaisseVM.cs" />
     <Compile Include="VMs\Models\AssociationMessageVM.cs" />
     <Compile Include="VMs\Models\EtatCommandeVM.cs" />
+    <Compile Include="VMs\Models\InterlocuteurVM.cs" />
     <Compile Include="VMs\Models\TypeArticleVM.cs" />
     <Compile Include="VMs\Models\TypeUniteVM.cs" />
     <Compile Include="VMs\Models\GroupeVM.cs" />

@@ -65,6 +65,7 @@ namespace webCaisse.Mappers
             {
                 _dest = new ReglementDM()
                 {
+                    DateReglement = _src.DateReglement,
                     Identifiant = _src.Identifiant,
                     EnActivite = _src.EnActivite,
                     IdCreePar = _src.IdCreePar,
@@ -72,10 +73,11 @@ namespace webCaisse.Mappers
                     IdModeReglement = _src.IdModeReglement,
                     Montant = _src.Montant,
                     Numero = _src.Numero,
-                    Datecheque = _src.Datecheque.ToString(),
+                    Datecheque = _src.Datecheque != null ? _src.Datecheque.ToString() : null,
                     Ncheque = _src.Ncheque,
                     NomBanque = _src.NomBanque,
-                    NCompte = _src.NCompte
+                    NCompte = _src.NCompte,
+                    LibelleModeReglement = _src.ModeReglement != null ? _src.ModeReglement.Libelle:"",
                 };
             }
             return _dest;

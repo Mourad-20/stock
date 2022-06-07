@@ -19,6 +19,7 @@ namespace webCaisse.VMs.Models
         public Int64? IdCreePar { get; set; }
         public Int64? IdCommande { get; set; }
         public Int64? IdCaisse { get; set; }
+        public String LibelleCaisse { get; set; }
         public Int64? IdValiderPar { get; set; }
         public String NomControleur { get; set; }
         public DateTime? DateCreation { get; set; }

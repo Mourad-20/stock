@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Web;
 using webCaisse.Db.Entities;
 using webCaisse.DMs;
+using webCaisse.DMs.Codes;
 using webCaisse.Taks.Contracts;
 using webCaisse.Tools;
 using webCaisse.uows;
@@ -46,12 +47,12 @@ namespace webCaisse.Taks.Implementation
             ICollection<DetailCommandeDM> _result = _uow.Repos<DetailCommande>().GetAll()
                 .Where(
                     a =>
-                    (_shouldGetResult)
-                    && (a.Affichable == 1)
+                    //(_shouldGetResult)&&
+                     (a.Affichable == 1)
                     && (a.EnActivite == 1)
                     && (a.Quantite > a.QuantiteServi)
                     && ((_idArticle != null) ? a.IdArticle == _idArticle : true)
-                    && (a.Commande.CodeCommande == "ALLIMENTATION")
+                    && (a.Commande.CodeCommande == TypeCommandeCode.ALLIMENTATION|| a.Commande.CodeCommande == TypeCommandeCode.ACHAT)
 
                     ).Select(
                         o => new DetailCommandeDM()
@@ -76,8 +77,10 @@ namespace webCaisse.Taks.Implementation
                             DateExpiration = o.DateExpiration,
                             IdSituation=o.IdSituation,
                             LibelleArticle = (o.Article != null) ? o.Article.Libelle : "",
+                            LibelleCaisse = (o.Caisse != null) ? o.Caisse.Libelle : "",
                             IdZone = (o.Article != null) ? o.Article.IdZone : null,
                             IdTypeUnite = o.IdTypeUnite,
+                            
                             LibelleTypeUnite = (o.TypeUnite != null) ? o.TypeUnite.Libelle : "",
                         }
                     ).ToList();

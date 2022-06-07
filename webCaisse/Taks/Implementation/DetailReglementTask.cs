@@ -37,9 +37,16 @@ namespace webCaisse.Taks.Implementation
         
         public ICollection<DetailReglementDM> getDetailReglementsDMByIdReglement(long? _idReglement)
         {
-            return _uow.Repos<DetailReglement>()
-                            .GetAll().Where(a => a.IdReglement == _idReglement && a.EnActivite == 1 && a.Affichable == 1)
-                            .Select(a => DetailReglementMapper.DetailReglementtoDetailReglementDM(a)).ToList();
+            ICollection<DetailReglementDM> _detailReglementDMs = new List<DetailReglementDM>();
+            ICollection<DetailReglement> _detailReglement = _uow.Repos<DetailReglement>()
+
+                            .GetAll().Where(a => a.IdReglement == _idReglement && a.EnActivite == 1 && a.Affichable == 1).ToList();
+                           foreach (DetailReglement a in _detailReglement)
+            {
+                DetailReglementDM _detailreglementDM = DetailReglementMapper.DetailReglementtoDetailReglementDM(a);
+                _detailReglementDMs.Add(_detailreglementDM);
+            }
+            return _detailReglementDMs;
         }
         
 

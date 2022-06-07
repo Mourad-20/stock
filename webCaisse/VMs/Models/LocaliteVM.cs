@@ -17,5 +17,7 @@ namespace webCaisse.VMs.Models
         public String Tel1 { get; set; }
         public String Tel2 { get; set; }
         public String RC { get; set; }
+        public ICollection<InterlocuteurVM> InterlocuteurVMs { get; set; }
+
     }
 }

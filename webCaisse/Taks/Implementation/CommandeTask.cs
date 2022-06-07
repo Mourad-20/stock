@@ -428,7 +428,9 @@ namespace webCaisse.Taks.Implementation
                      && ((_ddebut != null) ? a.DateCommande >= _ddebut : true)
                      
                     && ((_dfin != null) ? a.DateCommande <= _dfin : true)
-                    && ((_code!=null &&_code.Length > 0) ? a.CodeCommande == _code : true)
+                  
+                    && ((_code!=null &&_code.Length > 0) ? a.CodeCommande == _code : a.CodeCommande != null)
+
                     ).Select(
                         o => new CommandeDM()
                         {

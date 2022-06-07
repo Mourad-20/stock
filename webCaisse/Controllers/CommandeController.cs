@@ -927,26 +927,22 @@ namespace webCaisse.Controllers
                     _commandeVMs = new List<CommandeVM>();
                     foreach (CommandeDM _obj in _commandeDMs)
                     {
+                        ICollection<DetailCommandeDM> _detailCommandeDMs = _detailCommandeTask.getDetailCommandesDMByIdCommande(_obj.Identifiant);
+                        _detailCommandeDMs = _detailCommandeDMs.Where(a => a.IdValiderPar != null && a.DateCreation != null).ToList();
                         CommandeVM _commandeVM = CommandeMapper.CommandeDMtoCommandeVM(_obj);
+
+
                         _commandeVM.DetailCommandes = new List<DetailCommandeVM>();
-                        ICollection<DetailCommandeDM> dcDM = _detailCommandeTask.getDetailCommandesDMByIdCommande(_obj.Identifiant);
-                        if (dcDM != null && dcDM.Count > 0)
+                        foreach (DetailCommandeDM _dtc in _detailCommandeDMs)
                         {
-                            foreach (DetailCommandeDM dc in dcDM)
-                            {
-                                DetailCommandeVM DetailCommandeVm = DetailCommandeMapper.DetailCommandeDMtoDetailCommandeVM(dc);
-
-                                _commandeVM.DetailCommandes.Add(DetailCommandeVm);
-                            }
-
+                            DetailCommandeVM detailCommandeVM = DetailCommandeMapper.DetailCommandeDMtoDetailCommandeVM(_dtc);
+                            _commandeVM.DetailCommandes.Add(detailCommandeVM);
                         }
-
-                      
-                       
+                        
                         _commandeVMs.Add(_commandeVM);
                     }
                
-                    _commandeVMs = _commandeVMs.OrderByDescending(x => x.Identifiant).ToList();
+                    _commandeVMs = _commandeVMs.OrderBy(x => x.Identifiant).ToList();
                 }
                 _etatRep = new EtatReponse() { Code = EtatReponseCode.SUCCESS, Message = "RETURN OK" };
             }

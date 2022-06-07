@@ -16,6 +16,8 @@ namespace webCaisse.DMs
         public Double? QuantiteServi { get; set; }
         public Int64? IdArticle { get; set; }
         public Int64? IdCaisse{ get; set; }
+        public String LibelleCaisse { get; set; }
+
         public Int64? IdTypeUnite { get; set; }
         public String LibelleTypeUnite { get; set; }
 

@@ -51,10 +51,17 @@ namespace webCaisse.Taks.Implementation
   
         public ReglementDM getReglementDMById(long? _identifiant)
         {
-            return _uow.Repos<Reglement>()
-                           .GetAll().Where(a => a.Identifiant == _identifiant && a.EnActivite == 1 && a.Affichable == 1)
-                           .Select(a => ReglementMapper.ReglementtoReglementDM(a)).FirstOrDefault();
-        }
+            ReglementDM _reglementDM = new ReglementDM();
+           Reglement _reglements = _uow.Repos<Reglement>()
+                           .GetAll().Where(a => a.Identifiant == _identifiant && a.EnActivite == 1 && a.Affichable == 1).FirstOrDefault();
+       
+                 _reglementDM = ReglementMapper.ReglementtoReglementDM(_reglements);
+              
+            
+            return _reglementDM;
+        
+        //.Select(a => ReglementMapper.ReglementtoReglementDM(a)).FirstOrDefault();
+    }
         
         public ICollection<ReglementDM> getReglementDMsByIdCommande(long? _idCommande)
         {

@@ -24,7 +24,7 @@ namespace webCaisse.Mappers
                     Montant = _src.Montant,
                     Quantite = _src.Quantite,
                     QuantiteServi = _src.QuantiteServi,
-
+                    LibelleCaisse=_src.LibelleCaisse,
                     IdCreePar = _src.IdCreePar,
                     IdValiderPar=_src.IdValiderPar,
                     IdSituation = _src.IdSituation,
@@ -84,7 +84,7 @@ namespace webCaisse.Mappers
                     IdArticle = _src.IdArticle,
                     Montant = _src.Montant,
                     Quantite = _src.Quantite,
-                    QuantiteServi= _src.QuantiteServi,
+                    QuantiteServi = _src.QuantiteServi,
                     IdCommande = _src.IdCommande,
                     IdValiderPar = _src.IdValiderPar,
                     IdSituation = _src.IdSituation,
@@ -94,11 +94,12 @@ namespace webCaisse.Mappers
                     Description = _src.Description,
                     TauxTVA = _src.TauxTva,
                     DateExpiration = _src.DateExpiration,
-                    IdTypeUnite=_src.IdTypeUnite,
-                    LibelleTypeUnite=_src.TypeUnite!=null? _src.TypeUnite.Code:"",
+                    IdTypeUnite = _src.IdTypeUnite,
+                    LibelleTypeUnite = _src.TypeUnite != null ? _src.TypeUnite.Code : "",
 
+                    LibelleCaisse = _src.Caisse != null ? _src.Caisse.Libelle:null,
 
-                    IdCaisse =_src.IdCaisse
+                    IdCaisse = _src.IdCaisse
                 };
             }
             return _dest;
