@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSTicketPrepa" targetNamespace="http://tempuri.org/DSTicketPrepa.xsd" xmlns:mstns="http://tempuri.org/DSTicketPrepa.xsd" xmlns="http://tempuri.org/DSTicketPrepa.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSTicketPrepa" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSTicketPrepa" msprop:Generator_UserDSName="DSTicketPrepa">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MyDT" msprop:Generator_TableClassName="MyDTDataTable" msprop:Generator_TableVarName="tableMyDT" msprop:Generator_TablePropName="MyDT" msprop:Generator_RowDeletingName="MyDTRowDeleting" msprop:Generator_RowChangingName="MyDTRowChanging" msprop:Generator_RowEvHandlerName="MyDTRowChangeEventHandler" msprop:Generator_RowDeletedName="MyDTRowDeleted" msprop:Generator_UserTableName="MyDT" msprop:Generator_RowChangedName="MyDTRowChanged" msprop:Generator_RowEvArgName="MyDTRowChangeEvent" msprop:Generator_RowClassName="MyDTRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LibelleArticle" msprop:Generator_ColumnVarNameInTable="columnLibelleArticle" msprop:Generator_ColumnPropNameInRow="LibelleArticle" msprop:Generator_ColumnPropNameInTable="LibelleArticleColumn" msprop:Generator_UserColumnName="LibelleArticle" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantite" msprop:Generator_ColumnVarNameInTable="columnQuantite" msprop:Generator_ColumnPropNameInRow="Quantite" msprop:Generator_ColumnPropNameInTable="QuantiteColumn" msprop:Generator_UserColumnName="Quantite" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
