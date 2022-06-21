@@ -24,5 +24,7 @@ namespace webCaisse.Db.Entities
         public virtual Utilisateur CreePar { get; set; }
         public Int64? EnActivite { get; set; }
         public Int64? Affichable { get; set; }
+        public Int64? IdSource { get; set; }
+        public virtual Commande CommandeSource { get; set; }
     }
 }

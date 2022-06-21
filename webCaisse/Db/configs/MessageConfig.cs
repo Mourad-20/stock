@@ -13,7 +13,9 @@ namespace webCaisse.Db.configs
         {
             ToTable("Message");
             HasKey(e => e.Identifiant);
-            //HasOptional<Pays>(e => e.Pays).WithMany().HasForeignKey(e => e.IdPays);
+                HasOptional<Article>(e => e.Article).WithMany().HasForeignKey(e => e.IdArticle);
+            HasOptional<Article>(e => e.ArticleSrc).WithMany().HasForeignKey(e => e.IdArticleSrc);
+            HasOptional<TypeMessage>(e => e.TypeMessage).WithMany().HasForeignKey(e => e.IdTypeMessage);
         }
     }
 }

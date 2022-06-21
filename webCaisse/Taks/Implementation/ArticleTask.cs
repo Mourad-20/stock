@@ -77,7 +77,7 @@ namespace webCaisse.Taks.Implementation
 
         public void updateArticle(ArticleDM _articleDM)
         {
-            TauxTva _tauxtva = _uow.Repos<TauxTva>().GetAll().Where(x => x.Taux == _articleDM.TauxTva).FirstOrDefault();
+         //   TauxTva _tauxtva = _uow.Repos<TauxTva>().GetAll().Where(x => x.Taux == _articleDM.TauxTva).FirstOrDefault();
             if (_articleDM.Identifiant != 0)
             {
                 Article _article = getArticleById(_articleDM.Identifiant);
@@ -91,7 +91,7 @@ namespace webCaisse.Taks.Implementation
                 _article.IdTypeUnite = _articleDM.IdTypeUnite;
                 _article.IdZone = _articleDM.IdZone;
                 _article.IdTypeArticle = _articleDM.IdTypeArticle;
-               _article.IdTauxTva = _tauxtva.Identifiant;
+             //  _article.IdTauxTva = _tauxtva.Identifiant;
                 _article.Referance = _articleDM.Referance;
                 _article.CodeBare = _articleDM.CodeBare;
                 _uow.Repos<Article>().Update(_article);

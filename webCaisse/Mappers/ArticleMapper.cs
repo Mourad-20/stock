@@ -34,7 +34,8 @@ namespace webCaisse.Mappers
                     LibelleTypeUnite = _src.LibelleTypeUnite,
                     TauxTva=_src.TauxTva,
                     Referance=_src.Referance,
-                    CodeBare=_src.CodeBare
+                    CodeBare=_src.CodeBare,
+                    LibelleTypeArticle = _src.LibelleTypeArticle,
                 };
             }
             return _dest;

@@ -17,8 +17,12 @@ namespace webCaisse.Mappers
                 _dest = new MessageVM()
                 {
                     Identifiant = _src.Identifiant,
-                    EnActivite = _src.EnActivite, 
+                    EnActivite = _src.EnActivite,
                     Libelle = _src.Libelle,
+                    Quantite = _src.Quantite,
+                    LibelleArticle= _src.LibelleArticle,
+                    LibelleType= _src.LibelleType,
+                    IdArticleSrc = _src.IdArticleSrc,
                 };
             }
             return _dest;
@@ -33,6 +37,8 @@ namespace webCaisse.Mappers
                     Identifiant = _src.Identifiant,
                     EnActivite = _src.EnActivite,
                     Libelle = _src.Libelle,
+                    IdArticle= _src.IdArticle,
+                    IdArticleSrc = _src.IdArticleSrc,
                 };
             }
             return _dest;

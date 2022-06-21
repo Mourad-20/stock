@@ -25,5 +25,7 @@ namespace webCaisse.VMs.Models
         public Int64? IdCreePar { get; set; }
         public Int64? EnActivite { get; set; }
         public ICollection<DetailCommandeVM> DetailCommandes { get; set; }
+        public Int64? IdSource { get; set; }
+        public CommandeVM CommandeSourceVM { get; set; }
     }
 }

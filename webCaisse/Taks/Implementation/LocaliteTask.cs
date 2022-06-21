@@ -45,6 +45,7 @@ namespace webCaisse.Taks.Implementation
             _obj.Tel1 = _localiteDM.Tel1;
             _obj.Tel2 = _localiteDM.Tel2;
             _obj.RC = _localiteDM.RC;
+            _obj.IdUtilisateur = _localiteDM.IdUtilisateur;
             _uow.Repos<Localite>().Insert(_obj);
             _uow.saveChanges();
             return _obj.Identifiant;

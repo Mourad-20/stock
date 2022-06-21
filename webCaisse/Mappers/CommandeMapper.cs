@@ -33,7 +33,9 @@ namespace webCaisse.Mappers
                     LibelleEtatCommande = _src.LibelleEtatCommande,
                     LibelleLocalite = _src.LibelleLocalite,
                     NumeroSeance = _src.NumeroSeance,
-                    CodeCommande=_src.CodeCommande
+                    CodeCommande=_src.CodeCommande,
+                    IdSource=_src.IdSource,
+                    CommandeSourceVM= CommandeMapper.CommandeDMtoCommandeVM(_src.CommandeSourceDM)
                 };
             }
             return _dest;
@@ -57,6 +59,7 @@ namespace webCaisse.Mappers
                     IdSeance = _src.IdSeance,
                     Montant = _src.Montant,
                     Numero = _src.Numero,
+                    IdSource = _src.IdSource,
                     CodeCommande = _src.CodeCommande
                 };
             }
@@ -80,7 +83,9 @@ namespace webCaisse.Mappers
                     IdSeance = _src.IdSeance,
                     Montant = _src.Montant,
                     Numero = _src.Numero,
-                    CodeCommande = _src.CodeCommande
+                    IdSource = _src.IdSource,
+                    CodeCommande = _src.CodeCommande,
+                    CommandeSourceDM = CommandeMapper.CommandetoCommandeDM(_src.CommandeSource)
                 };
             }
             return _dest;

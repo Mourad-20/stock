@@ -25,5 +25,7 @@ namespace webCaisse.DMs
         public Int64? IdCreePar { get; set; }
         public Int64? EnActivite { get; set; }
         public ICollection<DetailCommandeDM> DetailCommandeDMs { get; set; }
+        public Int64? IdSource { get; set; }
+        public CommandeDM CommandeSourceDM { get; set; }
     }
 }

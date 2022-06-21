@@ -7,14 +7,13 @@ using webCaisse.Db.Entities;
 
 namespace webCaisse.Db.configs
 {
-    public class LocaliteConfig : EntityTypeConfiguration<Localite>
+    public class TypeMessageConfig : EntityTypeConfiguration<TypeMessage>
     {
-        public LocaliteConfig()
+        public TypeMessageConfig()
         {
-            ToTable("localite");
+            ToTable("Type_Message");
             HasKey(e => e.Identifiant);
-            HasOptional<EtatLocalite>(e => e.EtatLocalite).WithMany().HasForeignKey(e => e.IdEtatLocalite);
-            HasOptional<Utilisateur>(e => e.Utilisateur).WithMany().HasForeignKey(e => e.IdUtilisateur);
+           // HasOptional<Utilisateur>(e => e.CreeParUtilisateur).WithMany().HasForeignKey(e => e.IdCreePar);
             //HasOptional<Pays>(e => e.Pays).WithMany().HasForeignKey(e => e.IdPays);
         }
     }

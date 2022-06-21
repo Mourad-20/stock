@@ -30,14 +30,18 @@ namespace webCaisse.Taks.Implementation
         }
         public long? addMessageDM(MessageDM _messageDM)
         {
-            Message message = this.getMessagebyLibelle(_messageDM.Libelle);
+            /*Message message = this.getMessagebyLibelle(_messageDM.Libelle);
             if (message != null)
             {
                 throw new Exception("Message deja existe");
 
-            }
+            }*/
             Message _obj = _uow.Repos<Message>().Create();
             _obj.Libelle = _messageDM.Libelle;
+            _obj.IdArticle = _messageDM.IdArticle;
+            _obj.IdTypeMessage = _messageDM.IdTypeMessage;
+            _obj.Quantite = _messageDM.Quantite;
+            _obj.IdArticleSrc = _messageDM.IdArticleSrc;
             _obj.EnActivite = _messageDM.EnActivite;
             _obj.Affichable = 1;
             _uow.Repos<Message>().Insert(_obj);
@@ -61,10 +65,44 @@ namespace webCaisse.Taks.Implementation
                             Identifiant = a.Identifiant,
                             EnActivite = a.EnActivite,
                             Libelle = a.Libelle,
+                            IdArticle = a.IdArticle,
+                            IdTypeMessage = a.IdTypeMessage,
+                            Quantite = a.Quantite,
+                            LibelleArticle = a.ArticleSrc != null ? a.ArticleSrc.Libelle : "",
+                            LibelleType = a.TypeMessage != null ? a.TypeMessage.Libelle : "",
                         }
                     ).ToList();
             return _result;
         }
+
+        public ICollection<MessageDM> getMessagesbyId([Optional] Int64? _enActivite, [Optional] Int64? _idArticle)
+        {
+            bool _shouldGetResult = true;
+             _shouldGetResult = (_enActivite != null);
+           // _shouldGetResult = (_shouldGetResult != false) ? _shouldGetResult : true;
+            ICollection<MessageDM> _result = _uow.Repos<Message>().GetAll()
+                .Where(
+                    a =>
+                  //  (_shouldGetResult)
+                     (a.Affichable == 1)
+                    && ((_idArticle != null) ? a.IdArticle == _idArticle : true)
+                   && ((_enActivite != null) ? a.EnActivite == _enActivite : true)
+                    ).Select(
+                        a => new MessageDM()
+                        {
+                            Identifiant = a.Identifiant,
+                            EnActivite = a.EnActivite,
+                            Libelle = a.Libelle,
+                            IdArticle = a.IdArticle,
+                            IdTypeMessage = a.IdTypeMessage,
+                            Quantite = a.Quantite,
+                            LibelleArticle = a.ArticleSrc != null ? a.ArticleSrc.Libelle : "",
+                            LibelleType = a.TypeMessage != null ? a.TypeMessage.Libelle : "",
+                        }
+                    ).ToList();
+            return _result;
+        }
+
         public void modifierMessageDM(MessageDM _messageDM)
         {
             Message message = this.getMessagebyLibelle(_messageDM.Libelle);
@@ -79,6 +117,10 @@ namespace webCaisse.Taks.Implementation
                 Message _message = getMessageById(_messageDM.Identifiant);
                 _message.Libelle = _messageDM.Libelle;
                 _message.EnActivite = _messageDM.EnActivite;
+                _message.IdArticle = _messageDM.IdArticle;
+                _message.IdArticleSrc = _messageDM.IdArticleSrc;
+                _message.IdTypeMessage = _messageDM.IdTypeMessage;
+                _message.Quantite = _messageDM.Quantite;
                 _uow.Repos<Message>().Update(_message);
                 _uow.saveChanges();
             }

@@ -18,6 +18,7 @@ namespace webCaisse.Db.configs
             HasOptional<Localite>(e => e.Localite).WithMany().HasForeignKey(e => e.IdLocalite);
             HasOptional<Seance>(e => e.Seance).WithMany().HasForeignKey(e => e.IdSeance);
             HasOptional<EtatCommande>(e => e.EtatCommande).WithMany().HasForeignKey(e => e.IdEtatCommande);
+            HasOptional<Commande>(e => e.CommandeSource).WithMany().HasForeignKey(e => e.IdSource);
         }
     }
 }

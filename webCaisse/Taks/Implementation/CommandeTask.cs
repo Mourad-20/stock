@@ -59,6 +59,8 @@ namespace webCaisse.Taks.Implementation
             _commande.Montant = getTotalMontantCommande(_commandeDM);
             _commande.Numero = genererNumeroCommande();
             _commande.CodeCommande = _commandeDM.CodeCommande;
+            _commande.IdSource = _commandeDM.IdSource;
+
             _commande.DateCommande = DateTime.Now;
             _uow.Repos<Commande>().Insert(_commande);
             _uow.saveChanges();
@@ -98,6 +100,7 @@ namespace webCaisse.Taks.Implementation
             _commande.Montant = getTotalMontantCommande(_commandeDM);
             _commande.Numero = genererNumeroCommande();
             _commande.CodeCommande = _commandeDM.CodeCommande;
+            _commande.IdSource = _commandeDM.IdSource;
             _commande.DateCommande = DateTime.Now;
             
             _uow.Repos<Commande>().Insert(_commande);
@@ -159,6 +162,7 @@ namespace webCaisse.Taks.Implementation
                                 IdSeance = o.IdSeance,
                                 Numero = o.Numero,
                                 EnActivite = o.EnActivite,
+                                IdSource = o.IdSource,
                                 CodeCommande = o.CodeCommande,
                                 LibelleEtatCommande = (o.EtatCommande != null) ? o.EtatCommande.Libelle : "",
                                 CodeEtatCommande = (o.EtatCommande != null) ? o.EtatCommande.Code : "",
@@ -180,6 +184,7 @@ namespace webCaisse.Taks.Implementation
             //_commande.IdEtatCommande = _commandeDM.IdEtatCommande;
             _commande.IdLocalite = _commandeDM.IdLocalite;
             _commande.IdSeance = _commandeDM.IdSeance;
+            _commande.IdSource = _commandeDM.IdSource;
             _commande.CodeCommande = _commandeDM.CodeCommande;
             _commande.Montant = getTotalMontantCommande(_commandeDM);
             _uow.Repos<Commande>().Update(_commande);
@@ -219,6 +224,7 @@ namespace webCaisse.Taks.Implementation
             //_commande.IdEtatCommande = _commandeDM.IdEtatCommande;
             _commande.IdLocalite = _commandeDM.IdLocalite;
             _commande.IdSeance = _commandeDM.IdSeance;
+            _commande.IdSource = _commandeDM.IdSource;
             _commande.Montant = getTotalMontantCommande(_commandeDM);
             _uow.Repos<Commande>().Update(_commande);
             _uow.saveChanges();
@@ -283,6 +289,7 @@ namespace webCaisse.Taks.Implementation
                     IdLocalite = o.IdLocalite,
                     IdSeance = o.IdSeance,
                     Numero = o.Numero,
+                    IdSource = o.IdSource,
                     EnActivite = o.EnActivite,
                     CodeCommande = o.CodeCommande,
                      CodeEtatCommande = (o.EtatCommande != null) ? o.EtatCommande.Code : "",
@@ -444,7 +451,8 @@ namespace webCaisse.Taks.Implementation
                             LibelleCaisse=o.Seance.Caisse.Libelle,
                             Numero = o.Numero,
                             EnActivite = o.EnActivite,
-                            CodeCommande = o.CodeCommande,
+                            IdSource = o.IdSource,
+            CodeCommande = o.CodeCommande,
                             CodeEtatCommande = (o.EtatCommande != null) ? o.EtatCommande.Code : "",
                             LibelleEtatCommande = (o.EtatCommande != null) ? o.EtatCommande.Libelle : "",
                             LibelleLocalite = (o.Localite != null) ? o.Localite.Libelle : "",

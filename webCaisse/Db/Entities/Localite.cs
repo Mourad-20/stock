@@ -20,5 +20,7 @@ namespace webCaisse.Db.Entities
         public Int64? EnActivite { get; set; }
         public Int64? Affichable { get; set; }
         public String RC { get; set; }
+        public Int64? IdUtilisateur { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
     }
 }

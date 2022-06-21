@@ -43,7 +43,7 @@ namespace webCaisse
             container.RegisterType<IZoneTask, ZoneTask>();
             container.RegisterType<ICommercialisationTask, CommercialisationTask>();
             container.RegisterType<ICaisseTask, CaisseTask>();
-            container.RegisterType<IMessageTask, MessageTask>();
+            container.RegisterType<ITypeMessageTask, TypeMessageTask>();
             container.RegisterType<IAffectationMessageTask, AffectationMessageTask>();
             container.RegisterType<IActeurSeanceTask, ActeurSeanceTask>();
             container.RegisterType<IAffectationCaisseTask, AffectationCaisseTask>();

@@ -43,6 +43,7 @@ namespace webCaisse.Db
             modelBuilder.Configurations.Add(new AffectationCaisseConfig());
             modelBuilder.Configurations.Add(new AffectationMessageConfig());
             modelBuilder.Configurations.Add(new MessageConfig());
+            modelBuilder.Configurations.Add(new TypeMessageConfig());
             modelBuilder.Configurations.Add(new ActeurSeanceConfig());
             modelBuilder.Configurations.Add(new AssociationMessageConfig());
 

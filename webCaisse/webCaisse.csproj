@@ -314,6 +314,7 @@
     <Compile Include="Db\configs\CommercialisationConfig.cs" />
     <Compile Include="Db\configs\DetailReglementConfig.cs" />
     <Compile Include="Db\configs\TypeArticleConfig.cs" />
+    <Compile Include="Db\configs\TypeMessageConfig.cs" />
     <Compile Include="Db\configs\TypeUniteConfig.cs" />
     <Compile Include="Db\configs\ZoneConfig.cs" />
     <Compile Include="Db\configs\SituationCommandeConfig.cs" />
@@ -340,6 +341,7 @@
     <Compile Include="Db\Entities\Interlocuteur.cs" />
     <Compile Include="Db\Entities\TypeCommande.cs" />
     <Compile Include="Db\Entities\TypeArticle.cs" />
+    <Compile Include="Db\Entities\TypeMessage.cs" />
     <Compile Include="Db\Entities\TypeUnite.cs" />
     <Compile Include="Db\Entities\Message.cs" />
     <Compile Include="Db\Entities\Commercialisation.cs" />
@@ -371,12 +373,14 @@
     <Compile Include="DMs\AffectationCaisseDM.cs" />
     <Compile Include="DMs\Codes\TypeCommandeCode.cs" />
     <Compile Include="DMs\Codes\TypeArticleCode.cs" />
+    <Compile Include="DMs\Codes\TypeMessageCode.cs" />
     <Compile Include="DMs\Codes\TypeUniteCode.cs" />
     <Compile Include="DMs\Codes\SituationCommandeCode.cs" />
     <Compile Include="DMs\Codes\LocaliteCode.cs" />
     <Compile Include="DMs\InterlocuteurDM.cs" />
     <Compile Include="DMs\ModeReglementDM.cs" />
     <Compile Include="DMs\TypeArticleDM.cs" />
+    <Compile Include="DMs\TypeMessageDM.cs" />
     <Compile Include="DMs\TypeUniteDM.cs" />
     <Compile Include="DMs\MessageDM.cs" />
     <Compile Include="DMs\CommercialisationDM.cs" />
@@ -447,6 +451,7 @@
     <Compile Include="Taks\Contracts\IInterlocuteurTask.cs" />
     <Compile Include="Taks\Contracts\IModeReglement.cs" />
     <Compile Include="Taks\Contracts\ITypeArticleTask.cs" />
+    <Compile Include="Taks\Contracts\ITypeMessageTask.cs" />
     <Compile Include="Taks\Contracts\ITypeUniteTask.cs" />
     <Compile Include="Taks\Contracts\IMessageTask.cs" />
     <Compile Include="Taks\Contracts\ICaisseTask.cs" />
@@ -475,6 +480,7 @@
     <Compile Include="Taks\Implementation\InterlocuteurTask.cs" />
     <Compile Include="Taks\Implementation\ModeReglementTask.cs" />
     <Compile Include="Taks\Implementation\TypeArticleTask.cs" />
+    <Compile Include="Taks\Implementation\TypeMessageTask.cs" />
     <Compile Include="Taks\Implementation\TypeUniteTask.cs" />
     <Compile Include="Taks\Implementation\MessageTask.cs" />
     <Compile Include="Taks\Implementation\CaisseTask.cs" />

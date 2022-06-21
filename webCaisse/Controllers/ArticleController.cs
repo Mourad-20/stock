@@ -75,7 +75,7 @@ namespace webCaisse.Controllers
                 IArticleTask _articleTask = IoCContainer.Resolve<IArticleTask>();
                 ITypeUniteTask _typeUniteTask = IoCContainer.Resolve<ITypeUniteTask>();
                 ITypeArticleTask _typeArticleTask = IoCContainer.Resolve<ITypeArticleTask>();
-
+                
                 
                 if (articleVM != null)
                 {

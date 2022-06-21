@@ -26,7 +26,9 @@ namespace webCaisse.Mappers
                     Adresse2 = _src.Adresse2,
                     Tel1=_src.Tel1,
                     Tel2 = _src.Tel2,
-                    RC = _src.RC
+                    RC = _src.RC,
+                    NomUtilisateur=_src.NomUtilisateur
+
                 };
             }
             return _dest;
@@ -47,7 +49,8 @@ namespace webCaisse.Mappers
                     Adresse2 = _src.Adresse2,
                     Tel1 = _src.Tel1,
                     Tel2 = _src.Tel2,
-                    RC = _src.RC
+                    RC = _src.RC,
+                    IdUtilisateur=_src.IdUtilisateur,
                 };
             }
             return _dest;
@@ -69,7 +72,8 @@ namespace webCaisse.Mappers
                     Adresse2 = _src.Adresse2,
                     Tel1 = _src.Tel1,
                     Tel2 = _src.Tel2,
-                    RC=_src.RC
+                    RC=_src.RC,
+                    NomUtilisateur= _src.Utilisateur!=null?_src.Utilisateur.Nom:""
                 };
             }
             return _dest;
