@@ -15,5 +15,7 @@ namespace webCaisse.VMs.Models
         public String LibelleArticle { get; set; }
         public String LibelleType { get; set; }
         public Int64? IdArticleSrc { get; set; }
+        public Int64? IdTypeMessage { get; set; }
+
     }
 }

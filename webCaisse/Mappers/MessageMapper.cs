@@ -23,6 +23,8 @@ namespace webCaisse.Mappers
                     LibelleArticle= _src.LibelleArticle,
                     LibelleType= _src.LibelleType,
                     IdArticleSrc = _src.IdArticleSrc,
+                    IdArticle=_src.IdArticle,
+                    IdTypeMessage=_src.IdTypeMessage,
                 };
             }
             return _dest;
@@ -37,8 +39,10 @@ namespace webCaisse.Mappers
                     Identifiant = _src.Identifiant,
                     EnActivite = _src.EnActivite,
                     Libelle = _src.Libelle,
-                    IdArticle= _src.IdArticle,
+                    IdArticle = _src.IdArticle,
                     IdArticleSrc = _src.IdArticleSrc,
+                    IdTypeMessage = _src.IdTypeMessage,
+                    Quantite = _src.Quantite,
                 };
             }
             return _dest;

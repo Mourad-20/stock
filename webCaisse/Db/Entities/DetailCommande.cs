@@ -9,6 +9,7 @@ namespace webCaisse.Db.Entities
     {
         public Int64 Identifiant { get; set; }
         public Double? Montant { get; set; }
+        public Double? MontantDeclaration { get; set; }
         public Double? TauxTva { get; set; }
         public DateTime? DateExpiration { get; set; }
         public Int64? IdCaisse { get; set; }
@@ -32,9 +33,14 @@ namespace webCaisse.Db.Entities
 
         public Int64? IdValiderPar { get; set; }
         public virtual Utilisateur ValiderPar { get; set; }
+        public String TM { get; set; }
+        public String TF { get; set; }
 
+        public Double? SPI { get; set; }
+        public Double? SPF { get; set; }
         public Int64? IdSituation { get; set; }
         public virtual SituationCommande Situation { get; set; }
+
 
         public Int64? EnActivite { get; set; }
         public Int64? Affichable { get; set; }

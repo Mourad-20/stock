@@ -77,7 +77,6 @@ namespace webCaisse.Taks.Implementation
 
         public long? addCategorieDM(CategorieDM _categorieDM)
         {
-            Byte[] _bytes = Utilitaire.getPictureBoxAsByte(_categorieDM.ImageAsString);
             Categorie _obj = _uow.Repos<Categorie>().Create();
             _obj.Libelle = _categorieDM.Libelle;
             _obj.Code = _categorieDM.Code;
@@ -89,7 +88,9 @@ namespace webCaisse.Taks.Implementation
             //------------------------------
             if (_categorieDM.ImageAsString != null && _categorieDM.ImageAsString.Length > 0)
             {
-                String _fileName = _obj.Identifiant + ".jpg";
+                Byte[] _bytes = Utilitaire.getPictureBoxAsByte(_categorieDM.ImageAsString);
+
+               String _fileName = _obj.Identifiant + ".jpg";
                 addImageOnFS(_fileName, _bytes);
             }
             //------------------------------

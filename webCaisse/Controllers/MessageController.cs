@@ -66,11 +66,11 @@ namespace webCaisse.Controllers
                 IMessageTask _messageTask = IoCContainer.Resolve<IMessageTask>();
                 if (messageVM != null)
                 {
-                    string code = messageVM.LibelleType;
-                    TypeMessageDM _typeMessageDM = _typeMessageTask.getTypeMessageDMByCode(code);
+                    //string code = messageVM.LibelleType;
+                    //TypeMessageDM _typeMessageDM = _typeMessageTask.getTypeMessageDMByCode(code);
 
                     MessageDM _messageDM = MessageMapper.MessageVMtoMessageDM(messageVM);
-                    _messageDM.IdTypeMessage = _typeMessageDM.Identifiant;
+                   // _messageDM.IdTypeMessage = _typeMessageDM.Identifiant;
                     _idMessage = _messageTask.addMessageDM(_messageDM);
                 }
                 _etatRep = new EtatReponse() { Code = EtatReponseCode.SUCCESS, Message = "RETURN OK" };

@@ -181,7 +181,7 @@ namespace webCaisse.Controllers
                         DetailCommandeDM _detailCommandeDM = DetailCommandeMapper.DetailCommandeVMtoDetailCommandeDM(_detailCommandeVM);
                         _detailCommandeDM.EnActivite = 1;
                         _detailCommandeDM.IdCreePar = _idUtilisateur;
-                        _detailCommandeDM.QuantiteServi = 0;
+                        _detailCommandeDM.Quantite = 1;
                         _detailCommandeDM.IdSituation = _situationCommandeDM.Identifiant;
                         _detailCommandeDM.IdCreePar = _idUtilisateur;
 
@@ -291,7 +291,7 @@ namespace webCaisse.Controllers
 
                             //_detailCommandeDM.IdCreePar = _idUtilisateur;
                             _commandeDM.DetailCommandeDMs.Add(_detailCommandeDM);
-                            _commandeDM.CodeCommande = TypeCommandeCode.VENT;
+                            //_commandeDM.CodeCommande = TypeCommandeCode.VENT;
                             if (_detailCommandeVM.AffectationMessages != null) {
                                 _detailCommandeDM.AffectationMessageDMs = new List<AffectationMessageDM>();
                                 foreach (AffectationMessageVM _affectationMessageVM in _detailCommandeVM.AffectationMessages) {
