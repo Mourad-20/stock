@@ -92,7 +92,7 @@ namespace webCaisse.Controllers
                     //_articleDM.QuantiteMin = 0;
                     //_articleDM.IdTauxTva = 1;
                     _articleDM.IdTypeUnite = _typeUniteDM.Identifiant;
-                  //  _articleDM.IdTypeArticle = _typeArticleDM.Identifiant;
+                    _articleDM.IdTypeArticle = _typeArticleDM!=null? (int?)_typeArticleDM.Identifiant: null;
 
                     _idArticle = _articleTask.addArticle(_articleDM);
 

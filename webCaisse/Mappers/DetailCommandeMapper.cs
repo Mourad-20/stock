@@ -37,11 +37,7 @@ namespace webCaisse.Mappers
                     IdCaisse = _src.IdCaisse,
                     LibelleTypeUnite=_src.LibelleTypeUnite,
                     IdTypeUnite = _src.IdTypeUnite,
-                    TF=_src.TF,
-                    TM=_src.TM,
-                    SPF=_src.SPF,
-                    SPI=_src.SPI,
-                    MontantDeclaration=_src.MontantDeclaration
+                  
               
 
 
@@ -75,11 +71,7 @@ namespace webCaisse.Mappers
                     IdCaisse = _src.IdCaisse,
                     IdTypeUnite= _src.IdTypeUnite,
                      LibelleTypeUnite = _src.LibelleTypeUnite,
-                    TF = _src.TF,
-                    TM = _src.TM,
-                    SPF = _src.SPF,
-                    SPI = _src.SPI,
-                    MontantDeclaration = _src.MontantDeclaration
+                   
 
                 };
             }
@@ -112,11 +104,7 @@ namespace webCaisse.Mappers
                     LibelleCaisse = _src.Caisse != null ? _src.Caisse.Libelle:null,
 
                     IdCaisse = _src.IdCaisse,
-                    TF = _src.TF,
-                    TM = _src.TM,
-                    SPF = _src.SPF,
-                    SPI = _src.SPI,
-                    MontantDeclaration = _src.MontantDeclaration
+                   
                 };
             }
             return _dest;

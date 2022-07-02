@@ -181,7 +181,7 @@ namespace webCaisse.Controllers
                         DetailCommandeDM _detailCommandeDM = DetailCommandeMapper.DetailCommandeVMtoDetailCommandeDM(_detailCommandeVM);
                         _detailCommandeDM.EnActivite = 1;
                         _detailCommandeDM.IdCreePar = _idUtilisateur;
-                        _detailCommandeDM.Quantite = 1;
+                        _detailCommandeDM.Quantite = 0;
                         _detailCommandeDM.IdSituation = _situationCommandeDM.Identifiant;
                         _detailCommandeDM.IdCreePar = _idUtilisateur;
 

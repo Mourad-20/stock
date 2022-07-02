@@ -50,7 +50,7 @@ namespace webCaisse.Taks.Implementation
                     //(_shouldGetResult)&&
                      (a.Affichable == 1)
                     && (a.EnActivite == 1)
-                    && ( a.QuantiteServi==0)
+                    && (a.Quantite > a.QuantiteServi)
                     && ((_idArticle != null) ? a.IdArticle == _idArticle : true)
                     && (a.Commande.CodeCommande == TypeCommandeCode.ALLIMENTATION|| a.Commande.CodeCommande == TypeCommandeCode.ACHAT)
 
@@ -80,11 +80,7 @@ namespace webCaisse.Taks.Implementation
                             LibelleCaisse = (o.Caisse != null) ? o.Caisse.Libelle : "",
                             IdZone = (o.Article != null) ? o.Article.IdZone : null,
                             IdTypeUnite = o.IdTypeUnite,
-                            TF = o.TF,
-                            TM = o.TM,
-                            SPF = o.SPF,
-                            SPI = o.SPI,
-                            MontantDeclaration = o.MontantDeclaration,
+                           
                             LibelleTypeUnite = (o.TypeUnite != null) ? o.TypeUnite.Libelle : "",
                         }
                     ).ToList();
@@ -128,11 +124,7 @@ namespace webCaisse.Taks.Implementation
                             LibelleArticle = (o.Article != null) ? o.Article.Libelle : "",
                             IdZone = (o.Article != null) ? o.Article.IdZone : null,
                             IdTypeUnite = o.IdTypeUnite,
-                            TF = o.TF,
-                            TM = o.TM,
-                            SPF = o.SPF,
-                            SPI = o.SPI,
-                            MontantDeclaration = o.MontantDeclaration,
+                            
                             LibelleTypeUnite = (o.TypeUnite != null) ? o.TypeUnite.Libelle : "",
                         }
                     ).ToList();
@@ -193,11 +185,7 @@ namespace webCaisse.Taks.Implementation
             _detailCommande.DateCreation = DateTime.Now;
             _detailCommande.IdTypeUnite = _detailCommandeDM.IdTypeUnite;
             _detailCommande.IdSituation = _detailCommandeDM.IdSituation;
-            _detailCommande.TF = _detailCommandeDM.TF;
-            _detailCommande.TM = _detailCommandeDM.TM;
-            _detailCommande.SPF = _detailCommandeDM.SPF;
-            _detailCommande.SPI = _detailCommandeDM.SPI;
-            _detailCommande.MontantDeclaration = _detailCommandeDM.MontantDeclaration;
+           
             _uow.Repos<DetailCommande>().Insert(_detailCommande);
             _uow.saveChanges();
 
@@ -243,11 +231,7 @@ namespace webCaisse.Taks.Implementation
                                 DateExpiration=a.DateExpiration,
                                 IdCaisse = a.IdCaisse,
                                 IdTypeUnite=a.IdTypeUnite,
-                                TF = a.TF,
-                                TM = a.TM,
-                                SPF = a.SPF,
-                                SPI = a.SPI,
-                                MontantDeclaration = a.MontantDeclaration,
+                               
                                 LibelleTypeUnite = (a.TypeUnite != null) ? a.TypeUnite.Libelle : "",
                             }).ToList();
         }
@@ -285,11 +269,7 @@ namespace webCaisse.Taks.Implementation
                             IdCaisse = dc.IdCaisse,
 
                             IdTypeUnite = dc.IdTypeUnite,
-                            TF = dc.TF,
-                            TM = dc.TM,
-                            SPF = dc.SPF,
-                            SPI = dc.SPI,
-                            MontantDeclaration = dc.MontantDeclaration,
+                           
                             LibelleTypeUnite = (dc.TypeUnite != null) ? dc.TypeUnite.Libelle : "",
                     };
                         _detailCommandeDMs.Add(_detailCommandeDM);

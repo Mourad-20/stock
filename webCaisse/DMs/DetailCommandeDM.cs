@@ -37,12 +37,7 @@ namespace webCaisse.DMs
         public String LibelleArticle { get; set; }
         public Int64? IdCommande { get; set; }
 
-        public String TM { get; set; }
-        public String TF { get; set; }
-
-        public Double? SPI { get; set; }
-        public Double? SPF { get; set; }
-        public Double? MontantDeclaration { get; set; }
+      
         public Int64? EnActivite { get; set; }
         public ICollection<AffectationMessageDM> AffectationMessageDMs { get; set; }
     }

@@ -239,7 +239,7 @@ namespace webCaisse.Taks.Implementation
                     if (_detailCommadeDMsOrg.Where(a => a.Identifiant == _detailCommandeDM.Identifiant).Count() == 0)
                     {
                         _detailCommandeDM.IdCommande = _commande.Identifiant;
-                        _detailCommandeDM.Quantite = 1;
+                        _detailCommandeDM.QuantiteServi = 0;
                         _detailCommandeTask.addDetailCommandeDM(_detailCommandeDM);
                     }
                     else
