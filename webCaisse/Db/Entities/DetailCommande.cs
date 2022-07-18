@@ -32,9 +32,10 @@ namespace webCaisse.Db.Entities
 
         public Int64? IdValiderPar { get; set; }
         public virtual Utilisateur ValiderPar { get; set; }
-
+     
         public Int64? IdSituation { get; set; }
         public virtual SituationCommande Situation { get; set; }
+
 
         public Int64? EnActivite { get; set; }
         public Int64? Affichable { get; set; }

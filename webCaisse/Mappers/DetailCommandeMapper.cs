@@ -36,9 +36,12 @@ namespace webCaisse.Mappers
                     Description = _src.Description,
                     IdCaisse = _src.IdCaisse,
                     LibelleTypeUnite=_src.LibelleTypeUnite,
-                    IdTypeUnite = _src.IdTypeUnite
+                    IdTypeUnite = _src.IdTypeUnite,
+                  
+              
 
-                };
+
+    };
             }
             return _dest;
         }
@@ -68,6 +71,7 @@ namespace webCaisse.Mappers
                     IdCaisse = _src.IdCaisse,
                     IdTypeUnite= _src.IdTypeUnite,
                      LibelleTypeUnite = _src.LibelleTypeUnite,
+                   
 
                 };
             }
@@ -99,7 +103,8 @@ namespace webCaisse.Mappers
 
                     LibelleCaisse = _src.Caisse != null ? _src.Caisse.Libelle:null,
 
-                    IdCaisse = _src.IdCaisse
+                    IdCaisse = _src.IdCaisse,
+                   
                 };
             }
             return _dest;

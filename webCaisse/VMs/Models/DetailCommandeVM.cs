@@ -29,6 +29,9 @@ namespace webCaisse.VMs.Models
         public String LibelleSituation { get; set; }
         public Int64? IdTypeUnite { get; set; }
         public String LibelleTypeUnite { get; set; }
+
+       
+
         public ICollection<AffectationMessageVM> AffectationMessages { get; set; }
     }
 }

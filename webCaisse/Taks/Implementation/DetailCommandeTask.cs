@@ -80,7 +80,7 @@ namespace webCaisse.Taks.Implementation
                             LibelleCaisse = (o.Caisse != null) ? o.Caisse.Libelle : "",
                             IdZone = (o.Article != null) ? o.Article.IdZone : null,
                             IdTypeUnite = o.IdTypeUnite,
-                            
+                           
                             LibelleTypeUnite = (o.TypeUnite != null) ? o.TypeUnite.Libelle : "",
                         }
                     ).ToList();
@@ -124,6 +124,7 @@ namespace webCaisse.Taks.Implementation
                             LibelleArticle = (o.Article != null) ? o.Article.Libelle : "",
                             IdZone = (o.Article != null) ? o.Article.IdZone : null,
                             IdTypeUnite = o.IdTypeUnite,
+                            
                             LibelleTypeUnite = (o.TypeUnite != null) ? o.TypeUnite.Libelle : "",
                         }
                     ).ToList();
@@ -156,7 +157,7 @@ namespace webCaisse.Taks.Implementation
                 && (a.Commande.CodeCommande.Equals("ALLIMENTATION"))).FirstOrDefault();
                 if (_dc !=null)
                 {
-                    _dc.QuantiteServi += _detailCommandeDM.Quantite;
+                    _dc.QuantiteServi = _detailCommandeDM.Quantite;
                     updateDetailCommande(_dc);
                 }
                    
@@ -184,6 +185,7 @@ namespace webCaisse.Taks.Implementation
             _detailCommande.DateCreation = DateTime.Now;
             _detailCommande.IdTypeUnite = _detailCommandeDM.IdTypeUnite;
             _detailCommande.IdSituation = _detailCommandeDM.IdSituation;
+           
             _uow.Repos<DetailCommande>().Insert(_detailCommande);
             _uow.saveChanges();
 
@@ -229,7 +231,8 @@ namespace webCaisse.Taks.Implementation
                                 DateExpiration=a.DateExpiration,
                                 IdCaisse = a.IdCaisse,
                                 IdTypeUnite=a.IdTypeUnite,
-                                LibelleTypeUnite= (a.TypeUnite != null) ? a.TypeUnite.Libelle : "",
+                               
+                                LibelleTypeUnite = (a.TypeUnite != null) ? a.TypeUnite.Libelle : "",
                             }).ToList();
         }
 
@@ -266,6 +269,7 @@ namespace webCaisse.Taks.Implementation
                             IdCaisse = dc.IdCaisse,
 
                             IdTypeUnite = dc.IdTypeUnite,
+                           
                             LibelleTypeUnite = (dc.TypeUnite != null) ? dc.TypeUnite.Libelle : "",
                     };
                         _detailCommandeDMs.Add(_detailCommandeDM);
